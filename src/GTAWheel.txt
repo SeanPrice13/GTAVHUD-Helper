@@ -1,0 +1,62 @@
+#NoEnv
+SendMode Input
+SetWorkingDir %A_ScriptDir%
+#Persistent
+#SingleInstance, force
+Menu, Tray, Icon, C:\Windows\system32\setupapi.dll,56
+MsgBox, 64, WeaponWheel Helper by SeanPrice13, App started...`n`nWhen done`, press "Ctrl + X" to terminate the app.`n`n***************************************************`n`nDeveloper Website: https://seanprice13.github.io
+SetTimer, WatchPOV, 5
+return
+WatchPOV:
+if WinActive("ahk_class Grand theft auto San Andreas")
+JoyPOV := GetKeyState("JoyPOV")
+if JoyPOV < 27000
+SetTimer, WatchAxis, 5
+return
+WatchAxis:
+JoyU := GetKeyState("JoyU")
+JoyR := GetKeyState("JoyR")
+KeyToHoldDownPrev := KeyToHoldDown
+if (JoyR < 1) {
+KeyToHoldDown := "Numpad8"
+}
+else
+if (JoyR > 99) {
+KeyToHoldDown := "Numpad2"
+}
+else
+if (JoyU < 11) {
+if (JoyR > 39)
+if (JoyR < 61)
+KeyToHoldDown := "Numpad4"
+if (JoyR > 14)
+if (JoyR < 36)
+KeyToHoldDown := "Numpad7"
+if (JoyR > 69)
+if (JoyR < 91)
+KeyToHoldDown := "Numpad1"
+}
+else
+if (JoyU > 89) {
+if (JoyR > 39)
+if (JoyR < 61)
+KeyToHoldDown := "Numpad6"
+if (JoyR > 14)
+if (JoyR < 36)
+KeyToHoldDown := "Numpad9"
+if (JoyR > 69)
+if (JoyR < 91)
+KeyToHoldDown := "Numpad3"
+}
+else
+KeyToHoldDown := ""
+if (KeyToHoldDown = KeyToHoldDownPrev)
+return
+SetKeyDelay -1
+if KeyToHoldDownPrev
+Send, {%KeyToHoldDownPrev% up}
+if KeyToHoldDown
+Send, {%KeyToHoldDown% down}
+Send, {%KeyToHoldDownPrev% up}
+return
+^x::ExitApp

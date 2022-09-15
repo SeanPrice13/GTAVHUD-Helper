@@ -1,0 +1,127 @@
+{$CLEO .cs}
+0000:
+:WWHelper //SeanPrice13
+while true
+    wait 0 ms
+    if
+        00E1:   player 0 pressed_button 10 //Left DPad
+    then
+        0494: get_joystick 0 data_to $LStickX $LStickY $rsX $rsY
+        if
+            $rsY < -84
+        then
+            0C72: set_virtual_key 97 down false
+            0C72: set_virtual_key 98 down false
+            0C72: set_virtual_key 99 down false
+            0C72: set_virtual_key 100 down false
+            0C72: set_virtual_key 102 down false
+            0C72: set_virtual_key 103 down false
+            0C72: set_virtual_key 104 down true // Numpad 8
+            0C72: set_virtual_key 105 down false
+        end
+        if
+            $rsY > 84
+        then
+            0C72: set_virtual_key 97 down false
+            0C72: set_virtual_key 98 down true // Numpad 2
+            0C72: set_virtual_key 99 down false
+            0C72: set_virtual_key 100 down false
+            0C72: set_virtual_key 102 down false
+            0C72: set_virtual_key 103 down false
+            0C72: set_virtual_key 104 down false
+            0C72: set_virtual_key 105 down false            
+        end
+        if 
+            $rsX < -64
+        then
+            if
+                $rsY < -32
+            then
+                0C72: set_virtual_key 97 down false
+                0C72: set_virtual_key 98 down false
+                0C72: set_virtual_key 99 down false
+                0C72: set_virtual_key 100 down false
+                0C72: set_virtual_key 102 down false
+                0C72: set_virtual_key 103 down true // Numpad 7
+                0C72: set_virtual_key 104 down false
+                0C72: set_virtual_key 105 down false
+            end
+            if
+                $rsY > 32
+            then
+                0C72: set_virtual_key 97 down true // Numpad 1
+                0C72: set_virtual_key 98 down false
+                0C72: set_virtual_key 99 down false
+                0C72: set_virtual_key 100 down false
+                0C72: set_virtual_key 102 down false
+                0C72: set_virtual_key 103 down false
+                0C72: set_virtual_key 104 down false
+                0C72: set_virtual_key 105 down false
+            end
+            if and
+                $rsY < 16
+                $rsY > -16
+            then
+                0C72: set_virtual_key 97 down false
+                0C72: set_virtual_key 98 down false
+                0C72: set_virtual_key 99 down false
+                0C72: set_virtual_key 100 down true // Numpad 4
+                0C72: set_virtual_key 102 down false
+                0C72: set_virtual_key 103 down false
+                0C72: set_virtual_key 104 down false
+                0C72: set_virtual_key 105 down false
+            end
+        end    
+        if 
+            $rsX > 64
+        then
+            if
+                $rsY < -32
+            then
+                0C72: set_virtual_key 97 down false
+                0C72: set_virtual_key 98 down false
+                0C72: set_virtual_key 99 down false
+                0C72: set_virtual_key 100 down false
+                0C72: set_virtual_key 102 down false
+                0C72: set_virtual_key 103 down false
+                0C72: set_virtual_key 104 down false
+                0C72: set_virtual_key 105 down true // Numpad 9
+            end
+            if
+                $rsY > 32
+            then
+                0C72: set_virtual_key 97 down false
+                0C72: set_virtual_key 98 down false
+                0C72: set_virtual_key 99 down true // Numpad 3
+                0C72: set_virtual_key 100 down false
+                0C72: set_virtual_key 102 down false
+                0C72: set_virtual_key 103 down false
+                0C72: set_virtual_key 104 down false
+                0C72: set_virtual_key 105 down false
+            end
+            if and
+                $rsY < 16
+                $rsY > -16
+            then
+                0C72: set_virtual_key 97 down false
+                0C72: set_virtual_key 98 down false
+                0C72: set_virtual_key 99 down false
+                0C72: set_virtual_key 100 down false
+                0C72: set_virtual_key 102 down true // Numpad 6
+                0C72: set_virtual_key 103 down false
+                0C72: set_virtual_key 104 down false
+                0C72: set_virtual_key 105 down false
+            end
+        end 
+    else
+        0C72: set_virtual_key 97 down false
+        0C72: set_virtual_key 98 down false
+        0C72: set_virtual_key 99 down false
+        0C72: set_virtual_key 100 down false
+        0C72: set_virtual_key 102 down false
+        0C72: set_virtual_key 103 down false
+        0C72: set_virtual_key 104 down false
+        0C72: set_virtual_key 105 down false    
+    end
+end
+0A93: terminate_this_custom_script

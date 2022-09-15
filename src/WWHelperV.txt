@@ -1,0 +1,109 @@
+{$CLEO .cs}
+0000:
+:WWHelper // SeanPrice13
+while true
+    wait 0 ms
+    if
+        00E1:   player 0 pressed_button 10 //Left DPad
+    then
+        0494: get_joystick 0 data_to $LStickX $LStickY $rsX $rsY
+        if
+            $rsY < -84
+        then
+            0ACD: show_text_highpriority "Pistol" time 0 // Top || Slot 5
+            01B9: set_actor $PLAYER_ACTOR armed_weapon_to 22
+            01B9: set_actor $PLAYER_ACTOR armed_weapon_to 23  
+            01B9: set_actor $PLAYER_ACTOR armed_weapon_to 24
+        end
+        if
+            $rsY > 84
+        then
+            0ACD: show_text_highpriority "Melee" time 0  // Bottom || Slot 1
+            01B9: set_actor $PLAYER_ACTOR armed_weapon_to 0
+            01B9: set_actor $PLAYER_ACTOR armed_weapon_to 1
+            01B9: set_actor $PLAYER_ACTOR armed_weapon_to 2
+            01B9: set_actor $PLAYER_ACTOR armed_weapon_to 3  
+            01B9: set_actor $PLAYER_ACTOR armed_weapon_to 4
+            01B9: set_actor $PLAYER_ACTOR armed_weapon_to 5 
+            01B9: set_actor $PLAYER_ACTOR armed_weapon_to 6
+            01B9: set_actor $PLAYER_ACTOR armed_weapon_to 7 
+            01B9: set_actor $PLAYER_ACTOR armed_weapon_to 8
+            01B9: set_actor $PLAYER_ACTOR armed_weapon_to 9
+            01B9: set_actor $PLAYER_ACTOR armed_weapon_to 10
+            01B9: set_actor $PLAYER_ACTOR armed_weapon_to 11  
+            01B9: set_actor $PLAYER_ACTOR armed_weapon_to 12  
+            01B9: set_actor $PLAYER_ACTOR armed_weapon_to 14  
+            01B9: set_actor $PLAYER_ACTOR armed_weapon_to 15
+            01B9: set_actor $PLAYER_ACTOR armed_weapon_to 41
+            01B9: set_actor $PLAYER_ACTOR armed_weapon_to 43
+            01B9: set_actor $PLAYER_ACTOR armed_weapon_to 44
+            01B9: set_actor $PLAYER_ACTOR armed_weapon_to 45
+        end
+        if 
+            $rsX < -64
+        then
+            if
+                $rsY < -32
+            then
+                0ACD: show_text_highpriority "Projectile" time 0 // Top-Left || Slot 4
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 16
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 17
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 18
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 39
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 40
+            end
+            if
+                $rsY > 32
+            then
+                0ACD: show_text_highpriority "Shotgun" time 0 // Bottom-Left || Slot 2
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 25
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 26  
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 27
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 35
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 36
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 38
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 37
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 42
+            end
+            if and
+                $rsY < 16
+                $rsY > -16
+            then
+                0ACD: show_text_highpriority "Heavy Weapon" time 0 // Left || Slot 3
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 35
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 36
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 38
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 37
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 42
+            end
+        end    
+        if 
+            $rsX > 64
+        then
+            if
+                $rsY < -32
+            then
+                0ACD: show_text_highpriority "Uzi" time 0 // Top-Right || Slot 6
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 28
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 29
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 32
+            end
+            if
+                $rsY > 32
+            then
+                0ACD: show_text_highpriority "Sniper" time 0  // Bottom-Right || Slot 8
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 33
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 34
+            end
+            if and
+                $rsY < 16
+                $rsY > -16
+            then
+                0ACD: show_text_highpriority "Machine Gun" time 0 // Right || Slot 7
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 30
+                01B9: set_actor $PLAYER_ACTOR armed_weapon_to 31
+            end
+        end
+    end
+end
+0A93: terminate_this_custom_script
